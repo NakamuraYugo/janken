@@ -21,13 +21,11 @@
       player_hand == 1 && program_hand == 2 || 
       player_hand == 2 && program_hand == 0
       puts "あなたの勝ちです"
-      @win_or_lose = "win"
-      puts @win_or_lose
+      $win_or_lose = "win"
       return false
     else
       puts "あなたの負けです"
-      @win_or_lose = "lose"
-      puts @win_or_lose
+      $win_or_lose = "lose"
       return false
     end
   end
@@ -43,8 +41,8 @@
     puts "あっちむいて〜"
     puts "0(上)1(下)2(左)3(右)"
     
-    if @win_or_lose == "win"
-      player_direcxtion = gets.to_i
+    if $win_or_lose == "win"
+      player_direction = gets.to_i
       program_direction =rand(0..3)
       
       directions = ["上", "下", "左", "右"]
@@ -57,39 +55,38 @@
       if player_direction == program_direction
         puts "あなたが勝ちました！"
         return false
-      elsif
+      else
         puts "もう一度"
         return true
       end
       
       
-    elsif @win_or_lose == "lose"
-      player_direcxtion = gets.to_i
-      program_dirction =rand(0..3)
+    elsif $win_or_lose == "lose"
+      player_direction = gets.to_i
+      program_direction =rand(0..3)
       
       directions = ["上", "下", "左", "右"]
       
       puts "-----------------------------"
-      puts "あなた:#{directions[player_direction]}を出しました"
-      puts "相手:#{directions[program_direction]}を出しました"
+      puts "あなた:#{directions[player_direction]}"
+      puts "相手:#{directions[program_direction]}"
       puts "-----------------------------"
       
       if player_direction == program_direction
         puts "あなたが負けました！"
         return false
-      elsif
+      else
         puts "もう一度"
         return true
       end
     end
-    
-    
-    next_game = true
-    
-    while acchimuite_hoi do
-      while next_game do
-        next_game = janken
-      end  
-    end
   end
+    
+  next_game = true
+    
 
+    while acchimuite_hoi
+      while next_game
+        next_game = janken
+      end
+    end
